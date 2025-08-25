@@ -3,8 +3,7 @@ name: CD - Deploy con Git Pull
 on:
   push:
     branches:
-      
-main
+      - main
 
 jobs:
   deploy:
@@ -12,19 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      
-name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      
-name: Setup SSH
-      uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      
-name: Run Deploy Script
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
-          cd ~/lemp-sites/ulises_cabrera/repo_prueba_JS &&
-          git pull origin main"
+      - name: Run Deploy Script
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
+            cd ~/lemp-sites/pablo_abataneo/pablo_repo_sv &&
+            git pull origin main"
