@@ -1,4 +1,4 @@
-var precioPrimerProducto = 50;
+var precioPrimerProducto = 60;
 var precioSegundoProducto = 30;
 var esEstudiante = false;
 
